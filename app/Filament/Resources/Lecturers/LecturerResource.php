@@ -14,12 +14,21 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use UnitEnum;
 
 class LecturerResource extends Resource
 {
     protected static ?string $model = Lecturer::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
+
+    protected static ?string $recordTitleAttribute = 'Dosen';
+
+    protected static ?string $modelLabel = 'dosen';
+
+    protected static ?string $pluralModelLabel = 'dosen';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Manajemen Akademik';
 
     public static function form(Schema $schema): Schema
     {

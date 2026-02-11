@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\StudyProgram;
+use App\Models\User as AppUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,8 +38,11 @@ class TenantServiceProvider extends ServiceProvider
             return;
         }
 
-        // Cari tenant berdasarkan domain
-        $tenant = StudyProgram::where('domain', $host)->first();
+        // Cari tenant berdasarkan domain.
+        // Jika tenant tidak aktif, hanya superadmin yang boleh mengaksesnya.
+        $tenant = StudyProgram::query()
+            ->where('domain', $host)
+            ->first();
 
         if (! $tenant) {
             abort(404);
@@ -48,6 +53,14 @@ class TenantServiceProvider extends ServiceProvider
 
         // Share ke semua view
         View::share('tenant', $tenant);
+
+        if (! $tenant->is_active) {
+            $user = Auth::user();
+
+            if (! ($user instanceof AppUser) || (! $user->isSuperadmin())) {
+                abort(503);
+            }
+        }
     }
 
     protected function normalizeHost(?string $host): ?string

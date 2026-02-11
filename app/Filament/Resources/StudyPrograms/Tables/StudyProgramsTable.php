@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
 class StudyProgramsTable
@@ -20,6 +21,12 @@ class StudyProgramsTable
                     ->searchable(),
                 TextColumn::make('domain')
                     ->searchable(),
+                TextColumn::make('authors.name')
+                    ->label('Admin Program Studi')
+                    ->searchable(),
+                ToggleColumn::make('is_active')
+                    ->label('Aktif')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -9,19 +9,25 @@ use App\Filament\Resources\StudyPrograms\Schemas\StudyProgramForm;
 use App\Filament\Resources\StudyPrograms\Tables\StudyProgramsTable;
 use App\Models\StudyProgram;
 use BackedEnum;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class StudyProgramResource extends Resource
 {
     protected static ?string $model = StudyProgram::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
-    protected static ?string $recordTitleAttribute = 'Study Program';
+    protected static ?string $recordTitleAttribute = 'Program Study';
+
+    protected static ?string $modelLabel = 'program Studi';
+
+    protected static ?string $pluralModelLabel = 'program Studi';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Manajemen Akademik';
 
     public static function form(Schema $schema): Schema
     {
