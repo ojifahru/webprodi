@@ -54,8 +54,12 @@
                 </header>
 
                 <div class="mt-6 space-y-4 text-[15px] leading-7 text-slate-700">
-                    @if (filled($facility->description))
-                        {!! nl2br(e((string) $facility->description)) !!}
+                    @php
+                        $description = trim(strip_tags((string) ($facility->description ?? '')));
+                    @endphp
+
+                    @if (filled($description))
+                        {!! nl2br(e($description)) !!}
                     @else
                         <p class="italic text-slate-500">Deskripsi fasilitas belum tersedia.</p>
                     @endif

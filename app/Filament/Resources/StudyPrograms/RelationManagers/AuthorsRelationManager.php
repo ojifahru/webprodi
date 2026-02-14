@@ -16,25 +16,66 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Actions\Action;
 
-class AuthorsRelationManager extends RelationManager
+
+class AdminsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'authors';
+    protected static string $relationship = 'admin';
 
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label('Full Name')
+                    ->maxLength(255)
                     ->required(),
+
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
+                    ->placeholder('contoh@univbatam.ac.id')
+                    ->unique(ignoreRecord: true)
+                    ->maxLength(255)
                     ->required(),
-                DateTimePicker::make('email_verified_at'),
+
                 TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->columnSpanFull()
+                    ->required(fn(string $operation): bool => $operation === 'create')
+                    ->confirmed()
+                    ->dehydrated(fn(?string $state): bool => filled($state))
+                    ->helperText(
+                        fn(string $operation) => $operation === 'edit'
+                            ? 'Kosongkan jika tidak ingin mengubah password.'
+                            : null
+                    )
+                    ->suffixAction(
+                        Action::make('generatePassword')
+                            ->icon('heroicon-o-key')
+                            ->tooltip('Generate Password')
+                            ->action(function ($set) {
+                                $password = Str::random(12);
+
+                                // set password
+                                $set('password', $password);
+                            })
+                    )
+                    ->minLength(8)
+                    ->autocomplete('new-password')
+                    ->revealable(),
+
+                TextInput::make('password_confirmation')
+                    ->password()
+                    ->label('Confirm Password')
+                    ->columnSpanFull()
+                    ->required(fn(string $operation): bool => $operation === 'create')
+                    ->dehydrated(false)
+                    ->minLength(8)
+                    ->autocomplete('new-password')
+                    ->revealable(),
             ]);
     }
 

@@ -136,11 +136,7 @@ class NewsForm
                                 ->directory('news')
                                 ->visibility('public')
                                 ->maxSize(5120)
-                                ->acceptedFileTypes(['image/jpeg', 'image/png'])
-                                ->imageEditor()
-                                ->imageAspectRatio('16:9')
-                                ->automaticallyOpenImageEditorForAspectRatio()
-                                ->automaticallyResizeImagesMode('cover'),
+                                ->acceptedFileTypes(['image/jpeg', 'image/png']),
                         ]),
                 ]),
         ]);

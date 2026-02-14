@@ -21,7 +21,7 @@ class StudyProgramsTable
                     ->searchable(),
                 TextColumn::make('domain')
                     ->searchable(),
-                TextColumn::make('authors.name')
+                TextColumn::make('admin.name')
                     ->label('Admin Program Studi')
                     ->searchable(),
                 ToggleColumn::make('is_active')

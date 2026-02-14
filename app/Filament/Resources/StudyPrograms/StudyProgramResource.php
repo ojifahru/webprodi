@@ -42,7 +42,7 @@ class StudyProgramResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\AuthorsRelationManager::class,
+            RelationManagers\AdminsRelationManager::class,
         ];
     }
 

@@ -56,9 +56,9 @@ class StudyProgram extends Model
         'established_year' => 'integer',
     ];
 
-    public function authors()
+    public function admin()
     {
-        return $this->belongsToMany(User::class, 'authors_study_program', 'study_program_id', 'user_id');
+        return $this->belongsToMany(User::class, 'admin_study_program', 'study_program_id', 'user_id');
     }
 
     public function categories()

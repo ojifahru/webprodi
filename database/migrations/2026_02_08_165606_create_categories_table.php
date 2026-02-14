@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->foreignId('study_program_id')
+                ->constrained('study_programs')
+                ->cascadeOnDelete();
+
+            $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->unique(['study_program_id', 'name'], 'categories_study_program_name_unique');
+            $table->unique(['study_program_id', 'slug'], 'categories_study_program_slug_unique');
         });
     }
 

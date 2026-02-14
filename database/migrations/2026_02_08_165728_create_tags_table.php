@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
+            $table->foreignId('study_program_id')
+                ->constrained('study_programs')
+                ->cascadeOnDelete();
+
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
+
+            $table->unique(['study_program_id', 'name'], 'tags_study_program_name_unique');
+            $table->unique(['study_program_id', 'slug'], 'tags_study_program_slug_unique');
         });
     }
 

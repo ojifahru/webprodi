@@ -13,15 +13,22 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('study_program_id')
+                ->constrained('study_programs')
+                ->cascadeOnDelete();
+
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('content');
             $table->foreignId('category_id')->constrained('categories');
-            $table->ENUM('status', ['draft', 'published'])->default('draft');
+            $table->enum('status', ['draft', 'published'])->default('draft');
             $table->dateTime('published_at')->nullable();
             $table->foreignId('author_id')->constrained('users');
             $table->string('featured_image')->nullable();
             $table->timestamps();
+
+            $table->unique(['study_program_id', 'slug'], 'news_study_program_slug_unique');
         });
     }
 

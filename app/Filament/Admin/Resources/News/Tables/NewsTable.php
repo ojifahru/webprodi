@@ -23,7 +23,7 @@ class NewsTable
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable()
-                    ->limit(50)
+                    ->limit(100)
                     ->wrap(),
                 TextColumn::make('category.name')
                     ->label('Kategori')

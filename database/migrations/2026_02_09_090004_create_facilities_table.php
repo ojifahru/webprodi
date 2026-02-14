@@ -13,12 +13,22 @@ return new class extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('study_program_id')
+                ->constrained('study_programs')
+                ->cascadeOnDelete();
+
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
-            $table->foreignId('study_program_id')->constrained('study_programs');
+
             $table->boolean('is_featured')->default(false);
+
             $table->timestamps();
+
+            // Unique per tenant
+            $table->unique(['study_program_id', 'slug']);
         });
     }
 

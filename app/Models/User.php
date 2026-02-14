@@ -71,7 +71,7 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function studyPrograms(): BelongsToMany
     {
-        return $this->belongsToMany(StudyProgram::class, 'authors_study_program', 'user_id', 'study_program_id');
+        return $this->belongsToMany(StudyProgram::class, 'admin_study_program', 'user_id', 'study_program_id');
     }
 
     public function getTenants(Panel $panel): Collection

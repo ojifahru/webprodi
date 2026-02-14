@@ -21,6 +21,7 @@ class Facility extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description',
         'image_path',
         'study_program_id',
