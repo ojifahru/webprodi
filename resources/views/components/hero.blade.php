@@ -26,8 +26,7 @@
 <section class="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-primary-50 via-white to-white">
 
     {{-- Background Accent --}}
-    <div
-        class="absolute inset-x-0 top-0 h-48 bg-gradient-to-br from-primary-600/10 via-primary-500/10 to-transparent">
+    <div class="absolute inset-x-0 top-0 h-48 bg-gradient-to-br from-primary-600/10 via-primary-500/10 to-transparent">
     </div>
 
     <div
@@ -53,12 +52,12 @@
             {{-- CTA --}}
             <div class="mt-8 flex flex-wrap items-center gap-3">
                 <a href="#contact"
-                    class="inline-flex items-center rounded-full bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-500 hover:shadow-md">
+                    class="inline-flex items-center rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-primary-600/20 transition hover:bg-primary-500">
                     Hubungi Prodi
                 </a>
 
                 <a href="#latest-news"
-                    class="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-700 ring-1 ring-slate-300 transition hover:ring-slate-400 hover:text-slate-900">
+                    class="inline-flex items-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-700 ring-1 ring-slate-300 transition hover:bg-slate-50 hover:ring-slate-400 hover:text-slate-900">
                     Lihat Berita
                 </a>
             </div>
@@ -95,8 +94,8 @@
                 @else
                     <div
                         class="flex h-64 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-200 via-slate-100 to-white sm:h-72 lg:h-80">
-                        <span class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                            Banner Belum Tersedia
+                        <span class="text-sm font-medium italic text-slate-500">
+                            Banner belum tersedia
                         </span>
                     </div>
                 @endif

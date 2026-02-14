@@ -1,7 +1,15 @@
-@props(['title', 'id' => null, 'subtitle' => null])
+@props(['title', 'id' => null, 'subtitle' => null, 'tone' => 'default'])
 
-<section @if ($id) id="{{ $id }}" @endif
-    class="py-12 sm:py-14 odd:bg-white even:bg-slate-50">
+@php
+    $tone = (string) $tone;
+
+    $backgroundClass = match ($tone) {
+        'muted' => 'bg-slate-50',
+        default => 'bg-white',
+    };
+@endphp
+
+<section @if ($id) id="{{ $id }}" @endif class="py-12 sm:py-14 {{ $backgroundClass }}">
     <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <header class="mb-6 sm:mb-8">
             <div class="mb-3 h-1 w-14 rounded-full bg-primary-600/25"></div>

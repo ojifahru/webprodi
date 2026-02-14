@@ -12,7 +12,7 @@
             ],
         ]" />
 
-    <x-section id="contact" title="Kontak" subtitle="Informasi kontak resmi program studi.">
+    <x-section id="contact" title="Kontak" subtitle="Informasi kontak resmi program studi." tone="default">
         <x-contact-panel :tenant="$tenant" />
     </x-section>
 @endsection

@@ -31,7 +31,7 @@
         $initial = \Illuminate\Support\Str::upper(\Illuminate\Support\Str::substr($lecturer->name, 0, 1));
     @endphp
 
-    <x-section id="lecturer-detail" title="Profil" subtitle="Informasi dosen yang terdaftar pada program studi.">
+    <x-section id="lecturer-detail" title="Profil" subtitle="Informasi dosen yang terdaftar pada program studi." tone="default">
         <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8">
             <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
                 <div class="shrink-0">

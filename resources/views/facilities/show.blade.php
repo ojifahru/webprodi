@@ -31,7 +31,7 @@
         }
     @endphp
 
-    <x-section id="facility-detail" title="Deskripsi" subtitle="Informasi lengkap fasilitas.">
+    <x-section id="facility-detail" title="Deskripsi" subtitle="Informasi lengkap fasilitas." tone="default">
         <article class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200">
             @if ($imageUrl)
                 <img src="{{ $imageUrl }}" alt="{{ $facility->name }}" class="h-64 w-full object-cover sm:h-80" />
@@ -54,7 +54,11 @@
                 </header>
 
                 <div class="mt-6 space-y-4 text-[15px] leading-7 text-slate-700">
-                    {!! nl2br(e((string) ($facility->description ?: 'Deskripsi fasilitas belum tersedia.'))) !!}
+                    @if (filled($facility->description))
+                        {!! nl2br(e((string) $facility->description)) !!}
+                    @else
+                        <p class="italic text-slate-500">Deskripsi fasilitas belum tersedia.</p>
+                    @endif
                 </div>
             </div>
         </article>

@@ -3,9 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class StudyProgram extends Model
 {
+    use LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logAll()
+            ->logOnlyDirty()
+            ->useLogName('study_program')
+            ->setDescriptionForEvent(fn (string $eventName) => "Study Program has been {$eventName}");
+    }
+
     protected $fillable = [
         'name',
         'code',
@@ -42,7 +55,6 @@ class StudyProgram extends Model
         'is_active' => 'boolean',
         'established_year' => 'integer',
     ];
-
 
     public function authors()
     {

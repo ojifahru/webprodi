@@ -22,7 +22,7 @@
     <div class="space-y-3">
         <h3 class="text-base font-semibold text-slate-900">Profil Singkat</h3>
 
-        <p class="max-w-none text-[15px] leading-8 text-slate-700 text-justify">
+        <p class="max-w-none text-[15px] leading-8 text-slate-700">
             {{ $tenant->about ?? ($tenant->description ?? 'Profil program studi akan segera diperbarui.') }}
         </p>
     </div>

@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,22 +16,33 @@ class NewsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('featured_image')
+                    ->label('Gambar')
+                    ->square()
+                    ->imageSize(50),
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('category_id')
-                    ->numeric()
+                    ->searchable()
+                    ->sortable()
+                    ->limit(50)
+                    ->wrap(),
+                TextColumn::make('category.name')
+                    ->label('Kategori')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('status')
-                    ->badge(),
+                SelectColumn::make('status')
+                    ->label('Status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'published' => 'Published',
+                    ])
+                    ->sortable(),
                 TextColumn::make('published_at')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('author_id')
-                    ->numeric()
+                TextColumn::make('author.name')
+                    ->label('Author')
+                    ->searchable()
                     ->sortable(),
-                ImageColumn::make('featured_image'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

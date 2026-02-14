@@ -8,7 +8,7 @@
         <x-quick-info :tenant="$tenant" />
     </x-section> --}}
 
-    <x-section id="about" title="Tentang Program Studi">
+    <x-section id="about" title="Tentang Program Studi" tone="default">
         <div class="space-y-5">
             <x-about-section :tenant="$tenant" />
 
@@ -27,15 +27,17 @@
         <x-program-highlights :tenant="$tenant" />
     </x-section> --}}
 
-    <x-section id="latest-news" title="Berita Terbaru" subtitle="Publikasi dan aktivitas terbaru dari program studi.">
+    <x-section id="latest-news" title="Berita Terbaru" subtitle="Publikasi dan aktivitas terbaru dari program studi."
+        tone="muted">
         <x-news-teaser :news-items="$latestNews" />
     </x-section>
 
-    <x-section id="facilities" title="Fasilitas" subtitle="Fasilitas pendukung pembelajaran untuk mahasiswa.">
+    <x-section id="facilities" title="Fasilitas" subtitle="Fasilitas pendukung pembelajaran untuk mahasiswa."
+        tone="default">
         <x-facilities-teaser :facilities="$featuredFacilities" />
     </x-section>
 
-    <x-section id="lecturers" title="Dosen" subtitle="Sebagian dosen yang terlibat aktif di program studi.">
+    <x-section id="lecturers" title="Dosen" subtitle="Sebagian dosen yang terlibat aktif di program studi." tone="muted">
         <x-lecturers-teaser :lecturers="$featuredLecturers" />
     </x-section>
 @endsection

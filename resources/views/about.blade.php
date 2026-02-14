@@ -14,12 +14,12 @@
     <x-quick-info :tenant="$tenant" />
 
     <div class="py-10 sm:py-12">
-        <x-section id="about" title="Profil Program Studi" subtitle="Gambaran umum serta visi dan misi.">
+        <x-section id="about" title="Profil Program Studi" subtitle="Gambaran umum serta visi dan misi." tone="default">
             <x-about-section :tenant="$tenant" />
         </x-section>
 
         <x-section id="contact" title="Kontak Program Studi"
-            subtitle="Hubungi kami untuk informasi akademik dan layanan lainnya.">
+            subtitle="Hubungi kami untuk informasi akademik dan layanan lainnya." tone="muted">
             <x-contact-panel :tenant="$tenant" />
         </x-section>
     </div>

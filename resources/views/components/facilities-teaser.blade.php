@@ -21,19 +21,27 @@
         @endphp
 
         <article
-            class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50">
+            class="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md">
             @if ($imageUrl)
                 <a href="{{ $link }}" class="block">
                     <img src="{{ $imageUrl }}" alt="{{ $facility->name }}" class="h-44 w-full object-cover" />
                 </a>
             @endif
 
-            <div class="p-5">
-                <h3 class="text-base font-semibold text-slate-900">
+            <div class="p-6">
+                <h3 class="text-lg font-semibold tracking-tight text-slate-900">
                     <a href="{{ $link }}" class="hover:text-primary-600">{{ $facility->name }}</a>
                 </h3>
                 <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                    {{ \Illuminate\Support\Str::limit((string) $facility->description, 140) ?: 'Deskripsi fasilitas belum tersedia.' }}
+                    @php
+                        $description = \Illuminate\Support\Str::limit((string) $facility->description, 140);
+                    @endphp
+
+                    @if (filled($description))
+                        {{ $description }}
+                    @else
+                        <span class="italic text-slate-500">Deskripsi fasilitas belum tersedia.</span>
+                    @endif
                 </p>
 
                 <div class="mt-4">
@@ -47,8 +55,9 @@
         </article>
     @empty
         <article
-            class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-sm text-slate-600 sm:col-span-2 lg:col-span-3">
-            Data fasilitas program studi belum tersedia.
+            class="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-sm text-slate-600 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-3">
+            <p class="font-medium text-slate-900">Data fasilitas belum tersedia.</p>
+            <p class="mt-1 italic text-slate-500">Silakan cek kembali nanti.</p>
         </article>
     @endforelse
 </div>

@@ -18,7 +18,8 @@
             }
         @endphp
 
-        <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50">
+        <article
+            class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md">
             <div class="flex items-center gap-4">
                 @if ($photoUrl)
                     <a href="{{ $link }}" class="shrink-0">
@@ -32,8 +33,8 @@
                     </a>
                 @endif
 
-                <div>
-                    <h3 class="text-base font-semibold text-slate-900">
+                <div class="min-w-0">
+                    <h3 class="text-lg font-semibold tracking-tight text-slate-900">
                         <a href="{{ $link }}" class="hover:text-primary-600">{{ $lecturer->name }}</a>
                     </h3>
                     <p class="text-xs text-slate-500">NIDN: {{ $lecturer->nidn ?: '-' }}</p>
@@ -56,8 +57,9 @@
         </article>
     @empty
         <article
-            class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-sm text-slate-600 sm:col-span-2 lg:col-span-3">
-            Data dosen belum tersedia.
+            class="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-sm text-slate-600 ring-1 ring-slate-200 sm:col-span-2 lg:col-span-3">
+            <p class="font-medium text-slate-900">Data dosen belum tersedia.</p>
+            <p class="mt-1 italic text-slate-500">Informasi akan ditambahkan bertahap.</p>
         </article>
     @endforelse
 </div>

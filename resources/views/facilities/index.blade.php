@@ -13,7 +13,7 @@
         ]" />
 
     <x-section id="facilities" title="Daftar Fasilitas"
-        subtitle="Fasilitas yang tersedia untuk mendukung kegiatan belajar mengajar.">
+        subtitle="Fasilitas yang tersedia untuk mendukung kegiatan belajar mengajar." tone="default">
         <x-facilities-teaser :facilities="$facilities" />
 
         <div class="mt-8">

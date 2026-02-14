@@ -12,7 +12,8 @@
             ],
         ]" />
 
-    <x-section id="latest-news" title="Daftar Berita" subtitle="Informasi terbaru yang dipublikasikan oleh program studi.">
+    <x-section id="latest-news" title="Daftar Berita" subtitle="Informasi terbaru yang dipublikasikan oleh program studi."
+        tone="default">
         <x-news-teaser :news-items="$newsItems" />
 
         <div class="mt-8">
